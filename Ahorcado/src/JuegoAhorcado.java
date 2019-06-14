@@ -31,7 +31,7 @@ public class JuegoAhorcado {
 
 			System.out.println("Inserte una letra: ");
 			String letra = sc.nextLine();
-			// char letra = sc.next().charAt(0);
+			
 
 			// busca si contiene la letra introducida en la palabra
 			if (palabra.contains(letra)) {
@@ -54,6 +54,7 @@ public class JuegoAhorcado {
 
 			for (int i = 0; i < tamano; i++) {
 				System.out.println("---- " + respuesta[i] + " ------ ");
+				
 			}
 
 		} while (vidas != 0 && aciertos != tamano);
@@ -61,6 +62,7 @@ public class JuegoAhorcado {
 		if (vidas == 0) {
 			dibujo(vidas);
 		} else {
+			System.out.println("-----------");
 			for (int i = 0; i < tamano; i++) {
 				System.out.println("---- " + respuesta[i] + " ------ ");
 			}
@@ -82,6 +84,7 @@ public class JuegoAhorcado {
 			System.out.println("|     ");
 			System.out.println("|     ");
 			System.out.println("------");
+			System.out.println("***** Has perdido *****");
 			break;
 		case 1:
 			System.out.println("------");
