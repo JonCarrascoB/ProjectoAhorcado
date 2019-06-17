@@ -24,7 +24,7 @@ public class Ejercicio4 {
 
 		// Se crea una clase Tren nueva y se visualizan los datos metidos por consola
 		Tren t1 = new Tren(typeTrain, refTrain, seatsTrain, ageTrain);
-		System.out.println(t1.toString());
+		System.out.println(t1.mostrarDatos());
 		t1.DemasiadoViejo(ageTrain);
 		t1.TrenLleno(seatsTrain);
 
