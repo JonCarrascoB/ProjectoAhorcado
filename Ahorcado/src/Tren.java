@@ -53,11 +53,11 @@ public class Tren {
 		this.asientosOcupados = asientosOcupados;
 	}
 
-	public int getAñosActivo() {
+	public int getAnosActivo() {
 		return anosActivo;
 	}
 
-	public void setAñosActivo(int añosActivo) {
+	public void setAnosActivo(int añosActivo) {
 		this.anosActivo = añosActivo;
 	}
 
@@ -75,12 +75,12 @@ public class Tren {
 	 * @see CAPACIDAD_MAXIMA
 	 * @param asientos
 	 */
-	public static void TrenLleno(int asientos) {
-		if (asientos <= CAPACIDAD_MAXIMA) {
-			System.out.println("El tren no esta lleno");
-		} else {
-			System.out.println("Se han vendido más billetes de los posibles");
-		}
+	public boolean TrenLleno() {
+		boolean resul = false;
+		if (this.asientosOcupados <= CAPACIDAD_MAXIMA) {
+			resul = true;
+		} 
+		return resul;
 	}
 
 	/**
@@ -88,12 +88,13 @@ public class Tren {
 	 * @see EDAD_MAXIMA
 	 * @param años
 	 */
-	public static void DemasiadoViejo(int años) {
-		if (años >= EDAD_MAXIMA) {
-			System.out.println("FUERA DE CIRCULACION");
-		} else {
-			System.out.println("EN CIRCULACION");
-		}
+	public boolean DemasiadoViejo() {
+		boolean resul = false;
+		if (this.anosActivo >= EDAD_MAXIMA) {
+			resul = true;
+		} 
+		return resul;
+		
 	}
 
 }

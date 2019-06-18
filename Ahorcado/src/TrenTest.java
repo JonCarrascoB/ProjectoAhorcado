@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TrenTest {
@@ -32,9 +33,19 @@ public class TrenTest {
 		tren = null;
 	}
 
-	@Test
+	@Test //constructores
 	public void testTren() {
-		fail("Not yet implemented");
+
+		assertEquals(TIPO, tren.getTipo());
+		assertEquals(REFERENCIA, tren.getReferencia());
+		assertEquals(ASIENTOS, tren.getAsientosOcupados());
+		assertEquals(TIPO, tren.getAnosActivo());
+		
+		Tren tNull = new Tren(null, 0, -5, 0);
+		assertEquals(TIPO, tNull.getTipo());
+		assertEquals(REFERENCIA, tNull.getReferencia());
+		assertEquals(ASIENTOS, tNull.getAsientosOcupados());
+		assertEquals(TIPO, tNull.getAnosActivo());
 	}
 
 	@Test
@@ -42,59 +53,94 @@ public class TrenTest {
 		fail("Not yet implemented");
 	}
 
+	//getters y setters
 	@Test
 	public void testGetTipo() {
 		
-		assertEquals("Locomotora", tren.getTipo());
+		assertEquals(TIPO, tren.getTipo());
 	}
 
 	@Test
 	public void testSetTipo() {
-		fail("Not yet implemented");
+		
+		tren.setTipo("algo");
+		assertEquals("algo", tren.getTipo());
 	}
 
 	@Test
 	public void testGetReferencia() {
-		fail("Not yet implemented");
+
+		assertEquals(REFERENCIA, tren.getReferencia());
 	}
 
 	@Test
 	public void testSetReferencia() {
-		fail("Not yet implemented");
+
+		tren.setReferencia(7458);
+		assertEquals(7458, tren.getReferencia());
+		
+		tren.setReferencia(0);
+		assertEquals(0, tren.getReferencia());
 	}
 
 	@Test
 	public void testGetAsientosOcupados() {
-		fail("Not yet implemented");
+
+		assertEquals(ASIENTOS, tren.getAsientosOcupados());
 	}
 
 	@Test
 	public void testSetAsientosOcupados() {
-		fail("Not yet implemented");
+
+		tren.setAsientosOcupados(-1);
+		assertEquals(-1, tren.getAsientosOcupados());
+		
+		tren.setAsientosOcupados(Tren.CAPACIDAD_MAXIMA+1);
+		assertEquals(Tren.CAPACIDAD_MAXIMA+1, tren.getAsientosOcupados());
 	}
 
 	@Test
-	public void testGetAñosActivo() {
-		fail("Not yet implemented");
+	public void testGetAnosActivo() {
+		
+		assertEquals(ANOS, tren.getAnosActivo());
 	}
 
 	@Test
-	public void testSetAñosActivo() {
-		fail("Not yet implemented");
+	public void testSetAnosActivo() {
+		
+		tren.setAnosActivo(-1);
+		assertEquals(7458, tren.getAnosActivo());
+		
+		tren.setAnosActivo(Tren.EDAD_MAXIMA+1);
+		assertEquals(Tren.EDAD_MAXIMA+1, tren.getAnosActivo());
 	}
 
-	@Test
+	
+	@Ignore // ignora el test y lo salta JUnit
 	public void testMostrarDatos() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testTrenLleno() {
-		fail("Not yet implemented");
+
+		assertFalse(tren.TrenLleno());
+		
+		tren.setAsientosOcupados(Tren.CAPACIDAD_MAXIMA);
+		assertTrue(tren.TrenLleno());
+		
+		tren.setAsientosOcupados(Tren.CAPACIDAD_MAXIMA+1);
+		assertFalse(tren.TrenLleno());
 	}
 
 	@Test
 	public void testDemasiadoViejo() {
+		assertFalse(tren.DemasiadoViejo());
+		
+		tren.setAsientosOcupados(Tren.EDAD_MAXIMA);
+		assertTrue(tren.DemasiadoViejo());
+		
+		tren.setAsientosOcupados(Tren.CAPACIDAD_MAXIMA+1);
 		assertFalse(tren.DemasiadoViejo());
 	}
 
